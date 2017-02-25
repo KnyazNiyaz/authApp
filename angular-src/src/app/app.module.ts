@@ -10,8 +10,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
+import { ValidateService } from './services/validate.service'
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
@@ -30,12 +32,13 @@ const appRoutes: Routes = [
     ProfileComponent
   ],
   imports: [
+    FlashMessagesModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ValidateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
